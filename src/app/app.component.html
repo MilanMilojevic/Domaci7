@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
+        <div class="form-group">
+          <label for="email">Email address:</label>
+          <input type="email" class="form-control" id="email" formControlName="email">
+          <div *ngIf="myForm.get('email').invalid && (myForm.get('email').dirty || myForm.get('email').touched)" class="invalid-feedback">Please enter a valid email address.</div>
+        </div>
+        <div class="form-group">
+          <label for="subscription">Subscription:</label>
+          <select class="form-control" id="subscription" formControlName="subscription">
+            <option value="basic">Basic</option>
+            <option value="advanced" selected>Advanced</option>
+            <option value="pro">Pro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password" formControlName="password">
+          <div *ngIf="myForm.get('password').invalid && (myForm.get('password').dirty || myForm.get('password').touched)" class="invalid-feedback">Please enter a password.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <div *ngIf="showWarning" class="alert alert-danger mt-3">Please fix the errors in the form.</div>
+      </form>
+    </div>
+  </div>
+</div>
